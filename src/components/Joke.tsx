@@ -3,10 +3,10 @@ import axios from "axios";
 
 interface JokeProps {
     category: { value: string, requestNew: boolean },
-    setCategory: (category: any) => void
+    setSelectedCategory: (category: any) => void
 }
 
-const Joke: FC<JokeProps> = ({category, setCategory}) => {
+const Joke: FC<JokeProps> = ({category, setSelectedCategory}) => {
 
     const [joke, setJoke] = useState('Please choose a category');
 
@@ -16,7 +16,7 @@ const Joke: FC<JokeProps> = ({category, setCategory}) => {
                 .then(res => res.data.value)
                 .then(joke => {
                     setJoke(joke)
-                    setCategory({category: category.value, requestNew: false})
+                    setSelectedCategory({category: category.value, requestNew: false})
                 })
         }
     }, [category])

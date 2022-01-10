@@ -1,8 +1,20 @@
 .Categories {
     display: flex;
-    width: 100vw;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
     gap: 2rem;
+}
+
+.Button {
+    background-color: white;
+    border: 1px solid #cbcbcb;
+    padding: 0.5rem;
+    cursor: pointer;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    transition-duration: 200ms;
+}
+
+.Button:hover {
+    transform: scale(1.1);
 }

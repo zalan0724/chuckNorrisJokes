@@ -15,6 +15,7 @@ const Categories: FC<CategoriesProps> = ({setCategory}) => {
 
     const [categories, setCategories] = useState([]);
 
+
     useEffect(() => {
         axios.get('https://api.chucknorris.io/jokes/categories')
             .then(res => res.data)
@@ -23,9 +24,9 @@ const Categories: FC<CategoriesProps> = ({setCategory}) => {
 
     return (
         <div className={styles.Categories}>
-            {categories.map(category => (<button key={uuid()} onClick={() => {
-                setCategory({value: category, requestNew: true});
-            }}>{capitalizeFirstLetter(category)}</button>))}
+                {categories.map(category => (<button key={uuid()} className={styles.Button} onClick={() => {
+                    setCategory({value: category, requestNew: true});
+                }}>{capitalizeFirstLetter(category)}</button>))}
         </div>
     );
 }
