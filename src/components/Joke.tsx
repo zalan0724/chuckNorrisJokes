@@ -1,14 +1,15 @@
 import React, {FC} from 'react';
+import style from './Joke.module.css'
 
 interface JokeProps {
-    joke: string,
+    fact: string,
 }
 
-const Joke: FC<JokeProps> = ({joke}) => {
+const Joke: FC<JokeProps> = ({fact}) => {
 
     return (
-        <div>
-            <p>{joke}</p>
+        <div className={style.Joke}>
+            <h3>{fact}</h3>
         </div>
     );
 }

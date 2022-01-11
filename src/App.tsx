@@ -7,25 +7,27 @@ import axios from 'axios';
 
 const App: FC = () => {
 
-    const [joke, setJoke] = useState<string>('Please choose a category')
+    const [fact, setFact] = useState<string>('Please choose a category')
 
     const fetchJoke = (category: string) => {
         axios.get(`https://api.chucknorris.io/jokes/random?category=${category}`)
             .then(res => res.data.value)
-            .then(value => setJoke(value))
+            .then(value => setFact(value))
             .catch(err => alert(err))
     }
 
     return (
         <div className={style.App}>
-            <header className={style.Header}>
-                <img src={chuckImage} className={style.ChuckImage} alt={'Chuck Norris'}/>
-                <div className={style.CategoriesContainer}>
-                    <h3>Let me tell you a fact about...</h3>
-                    <Categories handleClick={fetchJoke}/>
-                </div>
-            </header>
-            <Joke joke={joke}/>
+            <div className={style.Wrapper}>
+                <header className={style.Header}>
+                    <img src={chuckImage} className={style.ChuckImage} alt={'Chuck Norris'}/>
+                    <div className={style.CategoriesContainer}>
+                        <h3>Let me tell you a fact about...</h3>
+                        <Categories handleClick={fetchJoke}/>
+                    </div>
+                </header>
+                <Joke fact={fact}/>
+            </div>
         </div>
     );
 }

@@ -13,8 +13,7 @@ interface CategoriesProps {
 
 const Categories: FC<CategoriesProps> = ({handleClick}) => {
 
-    const [categories, setCategories] = useState([]);
-
+    const [categories, setCategories] = useState<string[]>([]);
 
     useEffect(() => {
         axios.get('https://api.chucknorris.io/jokes/categories')

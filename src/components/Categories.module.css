@@ -8,11 +8,14 @@
 
 .Button {
     background-color: white;
-    border: 1px solid #cbcbcb;
+    border: none;
+    color: #F15A24;
+    font-weight: bold;
+    outline: none;
     padding: 0.5rem;
     cursor: pointer;
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     transition-duration: 200ms;
+    font-family: 'Press Start 2P', cursive;
 }
 
 .Button:hover {
