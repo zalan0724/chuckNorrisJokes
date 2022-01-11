@@ -8,10 +8,10 @@ const capitalizeFirstLetter = (text: string) => {
 }
 
 interface CategoriesProps {
-    setCategory: (category: any) => void
+    handleClick: (category: string) => void
 }
 
-const Categories: FC<CategoriesProps> = ({setCategory}) => {
+const Categories: FC<CategoriesProps> = ({handleClick}) => {
 
     const [categories, setCategories] = useState([]);
 
@@ -24,9 +24,9 @@ const Categories: FC<CategoriesProps> = ({setCategory}) => {
 
     return (
         <div className={styles.Categories}>
-                {categories.map(category => (<button key={uuid()} className={styles.Button} onClick={() => {
-                    setCategory({value: category, requestNew: true});
-                }}>{capitalizeFirstLetter(category)}</button>))}
+            {categories.map(category => (<button key={uuid()} title={category} className={styles.Button} onClick={() => {
+                handleClick(category);
+            }}>{capitalizeFirstLetter(category)}</button>))}
         </div>
     );
 }

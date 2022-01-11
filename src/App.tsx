@@ -3,21 +3,29 @@ import style from './App.module.css';
 import Categories from "./components/Categories";
 import Joke from './components/Joke';
 import chuckImage from './assests/chuck.png'
+import axios from 'axios';
 
 const App: FC = () => {
 
-    const [selectedCategory, setSelectedCategory] = useState({value: '', requestNew: false})
+    const [joke, setJoke] = useState<string>('Please choose a category')
+
+    const fetchJoke = (category: string) => {
+        axios.get(`https://api.chucknorris.io/jokes/random?category=${category}`)
+            .then(res => res.data.value)
+            .then(value => setJoke(value))
+            .catch(err => alert(err))
+    }
 
     return (
         <div className={style.App}>
             <header className={style.Header}>
-                <img src={chuckImage} className={style.ChuckImage} alt={'Chuck Norris Image'}/>
+                <img src={chuckImage} className={style.ChuckImage} alt={'Chuck Norris'}/>
                 <div className={style.CategoriesContainer}>
                     <h3>Let me tell you a fact about...</h3>
-                    <Categories setCategory={setSelectedCategory}/>
+                    <Categories handleClick={fetchJoke}/>
                 </div>
             </header>
-            <Joke category={selectedCategory} setSelectedCategory={setSelectedCategory}/>
+            <Joke joke={joke}/>
         </div>
     );
 }
